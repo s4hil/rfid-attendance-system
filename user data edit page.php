@@ -71,35 +71,37 @@
 	
 	<body>
 
-		<h2 align="center">NodeMCU V3 ESP8266 / ESP12E with MYSQL Database</h2>
+		<?php
+			include './assets/navbar.php';
+		?>
 		
-		<div class="container">
+		<div class="container mt-5">
      
-			<div class="center" style="margin: 0 auto; width:495px; border-style: solid; border-color: #f2f2f2;">
+			<div class="center p-4" style="margin: 0 auto; width:50%; border-style: solid; border-color: #f1f1f1;">
 				<div class="row">
 					<h3 align="center">Edit User Data</h3>
 					<p id="defaultGender" hidden><?php echo $data['gender'];?></p>
 				</div>
 		 
-				<form class="form-horizontal" action="user data edit tb.php?id=<?php echo $id?>" method="post">
+				<form class="form-horizontal" action="?" method="post">
 					<div class="control-group">
 						<label class="control-label">ID</label>
 						<div class="controls">
-							<input name="id" type="text"  placeholder="" value="<?php echo $data['id'];?>" readonly>
+							<input class="form-control" name="id" type="text"  placeholder="" value="<?php echo $data['id'];?>" readonly>
 						</div>
 					</div>
 					
 					<div class="control-group">
 						<label class="control-label">Name</label>
 						<div class="controls">
-							<input name="name" type="text"  placeholder="" value="<?php echo $data['name'];?>" required>
+							<input class="form-control" name="name" type="text"  placeholder="" value="<?php echo $data['name'];?>" required>
 						</div>
 					</div>
 					
 					<div class="control-group">
 						<label class="control-label">Gender</label>
 						<div class="controls">
-							<select name="gender" id="mySelect">
+							<select name="gender" id="mySelect" class="form-control">
 								<option value="Male">Male</option>
 								<option value="Female">Female</option>
 							</select>
@@ -109,18 +111,18 @@
 					<div class="control-group">
 						<label class="control-label">Email Address</label>
 						<div class="controls">
-							<input name="email" type="text" placeholder="" value="<?php echo $data['email'];?>" required>
+							<input class="form-control" name="email" type="text" placeholder="" value="<?php echo $data['email'];?>" required>
 						</div>
 					</div>
 					
 					<div class="control-group">
 						<label class="control-label">Mobile Number</label>
 						<div class="controls">
-							<input name="mobile" type="text"  placeholder="" value="<?php echo $data['mobile'];?>" required>
+							<input class="form-control" name="mobile" type="text"  placeholder="" value="<?php echo $data['mobile'];?>" required>
 						</div>
 					</div>
 					
-					<div class="form-actions">
+					<div class="form-actions mt-2">
 						<button type="submit" class="btn btn-success">Update</button>
 						<a class="btn" href="user data.php">Back</a>
 					</div>

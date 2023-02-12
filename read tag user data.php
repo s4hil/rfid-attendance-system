@@ -11,8 +11,9 @@
 	$q = $pdo->prepare($sql);
 	$q->execute(array($id));
 	$data = $q->fetch(PDO::FETCH_ASSOC);
-	Database::disconnect();
 	
+	$status = "true";
+
 	$msg = null;
 	if (null==$data['name']) {
 		$msg = "The ID of your Card / KeyChain is not registered !!!";
@@ -21,9 +22,22 @@
 		$data['gender']="--------";
 		$data['email']="--------";
 		$data['mobile']="--------";
+		$status = "false";
+		$enteredUser = "Unknown";
 	} else {
 		$msg = null;
+		$enteredUser = $data['name'];
 	}
+
+	$sql = "INSERT INTO `logs` (uid) VALUES('$id')";
+	$pdo = Database::connect();	
+
+	$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+	$sql = "INSERT INTO logs (uid, status, name) values(?,?, ?)";
+	$q = $pdo->prepare($sql);
+	$q->execute(array($id, $status, $enteredUser));
+	Database::disconnect();
+	
 ?>
  
 <!DOCTYPE html>
@@ -83,6 +97,14 @@
 				</table>
 			</form>
 		</div>
-		<p style="color:red;"><?php echo $msg;?></p>
+		<?php
+			if ($msg != "") { ?>
+				<div class="d-flex justify-content-center" style="width: 100vw;">
+					<div style="width: 35%;" class="alert alert-danger mt-3 text-center"><?php echo $msg;?></div>
+				</div>
+			<?php
+			}
+		?>
+
 	</body>
 </html>

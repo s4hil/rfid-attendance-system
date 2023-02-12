@@ -61,6 +61,9 @@
 			ul.topnav li.right, 
 			ul.topnav li {float: none;}
 		}
+		.control-group {
+			/*padding: .2rem 1rem ;*/
+		}
 		</style>
 		
 		<title>Registration : NodeMCU V3 ESP8266 / ESP12E with MYSQL Database</title>
@@ -68,40 +71,33 @@
 	
 	<body>
 
-		<h2 align="center">NodeMCU V3 ESP8266 / ESP12E with MYSQL Database</h2>
-		<ul class="topnav">
-			<li><a href="home.php">Home</a></li>
-			<li><a href="user data.php">User Data</a></li>
-			<li><a class="active" href="registration.php">Registration</a></li>
-			<li><a href="read tag.php">Read Tag ID</a></li>
-		</ul>
+		<?php
+			include './assets/navbar.php';
+		?>
 
 		<div class="container">
 			<br>
-			<div class="center" style="margin: 0 auto; width:495px; border-style: solid; border-color: #f2f2f2;">
-				<div class="row">
-					<h3 align="center">Registration Form</h3>
-				</div>
-				<br>
-				<form class="form-horizontal" action="insertDB.php" method="post" >
+			<div class="center p-4" style="margin: 0 auto; width:50%; border: 1px solid #f1f1f1;">
+				
+				<form class="form-horizontal" action="insertDB.php" method="post">
 					<div class="control-group">
-						<label class="control-label">ID</label>
+						<label class="label">ID</label>
 						<div class="controls">
-							<textarea name="id" id="getUID" placeholder="Please Scan your Card / Key Chain to display ID" rows="1" cols="1" required></textarea>
+							<input class="form-control" name="id" id="getUID" placeholder="Please Scan..." rows="1" cols="1" required>
 						</div>
 					</div>
 					
 					<div class="control-group">
 						<label class="control-label">Name</label>
 						<div class="controls">
-							<input id="div_refresh" name="name" type="text"  placeholder="" required>
+							<input class="form-control" id="div_refresh" name="name" type="text"  placeholder="" required>
 						</div>
 					</div>
 					
 					<div class="control-group">
 						<label class="control-label">Gender</label>
 						<div class="controls">
-							<select name="gender">
+							<select name="gender" class="form-control">
 								<option value="Male">Male</option>
 								<option value="Female">Female</option>
 							</select>
@@ -111,19 +107,19 @@
 					<div class="control-group">
 						<label class="control-label">Email Address</label>
 						<div class="controls">
-							<input name="email" type="text" placeholder="" required>
+							<input class="form-control" name="email" type="text" placeholder="" required>
 						</div>
 					</div>
 					
 					<div class="control-group">
 						<label class="control-label">Mobile Number</label>
 						<div class="controls">
-							<input name="mobile" type="text"  placeholder="" required>
+							<input class="form-control" name="mobile" type="text"  placeholder="" required>
 						</div>
 					</div>
 					
 					<div class="form-actions">
-						<button type="submit" class="btn btn-success">Save</button>
+						<button type="submit" class="btn btn-success mt-2 form-control">Save</button>
                     </div>
 				</form>
 				

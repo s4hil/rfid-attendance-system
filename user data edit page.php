@@ -14,6 +14,25 @@
 	Database::disconnect();
 ?>
 
+<?php
+	if (isset($_POST['submit'])) {
+
+		$name = $_POST['name'];
+		$id = $_POST['id'];
+		$gender = $_POST['gender'];
+        $email = $_POST['email'];
+        $mobile = $_POST['mobile'];
+
+		$pdo = Database::connect();
+		$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		$sql = "UPDATE table_the_iot_projects SET name = ? , gender = ? , email = ? , mobile = ? WHERE id = ?";
+		$q = $pdo->prepare($sql);
+		$q->execute(array($name,$gender,$email,$mobile,$id));
+		Database::disconnect();
+		header('Location: user data.php');
+	}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <html>
@@ -123,7 +142,7 @@
 					</div>
 					
 					<div class="form-actions mt-2">
-						<button type="submit" class="btn btn-success">Update</button>
+						<button name="submit" type="submit" class="btn btn-success">Update</button>
 						<a class="btn" href="user data.php">Back</a>
 					</div>
 				</form>

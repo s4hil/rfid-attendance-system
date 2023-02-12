@@ -38,7 +38,7 @@
 					<?php
 					include 'database.php';
 	                   $pdo = Database::connect();
-	                   $sql = 'SELECT * FROM logs ORDER BY id DESC';
+	                   $sql = 'SELECT * FROM logs ORDER BY `id` DESC';
 	                   foreach ($pdo->query($sql) as $row) {
 	                            echo '<tr>';
 	                            echo '<td>'. $row['uid'] . '</td>';
@@ -57,7 +57,9 @@
 	<script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
 	<script>
 		$(document).ready( function () {
-		    $('#table').DataTable();
+		    $('#table').DataTable({
+		    	order: "",
+		    });
 		} );
 	</script>
 </html>
